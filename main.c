@@ -55,7 +55,8 @@ int main(int argc, char *argv[]) {
 		perror(error_buffer);
 		return 0;
 	}
-
+	
+	close(sockfd);
 	
 	return 0;
 }
