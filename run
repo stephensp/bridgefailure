@@ -221,8 +221,8 @@ sub broadcast {
 sub get_path {
 	my ($id) = @_;
 
-#  	return "\0" . get_name($id);
-	return "04" . get_name($id);
+  	return "\0" . get_name($id);
+#	return "0" . get_name($id);
 }
 
 sub get_name {

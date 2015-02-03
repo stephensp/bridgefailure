@@ -23,10 +23,10 @@ int main(int argc, char *argv[]) {
 
 	// Get the LAN name, with '\0' prepended 
 	lanName = (char *) malloc(strlen(argv[2] + 2));
-#if 0
 	lanName[0] = 0;
-#endif
+#if 0
 	lanName[0] = '0';
+#endif
 	strcpy(lanName + 1, argv[2]);
 
 	printf("Bridge %04x starting up\n", id);
