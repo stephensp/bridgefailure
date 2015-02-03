@@ -29,6 +29,7 @@ int main(int argc, char *argv[]) {
 	lanName[0] = '0';
 #endif
 	strcpy(lanName + 1, argv[2]);
+	int length = strlen(argv[2])+1;
 
 	printf("Bridge %04x starting up\n", id);
 
@@ -44,9 +45,11 @@ int main(int argc, char *argv[]) {
 
 	soc.sun_family = AF_UNIX;
 	// Can't use str_cpy because null character
-	soc.sun_path[0] = lanName[0];
-	strcpy(&(soc.sun_path[1]), &(lanName[1]));
+//	soc.sun_path[0] = lanName[0];
+//	strcpy(&(soc.sun_path[1]), &(lanName[1]));
+	memcpy(soc.sun_path, lanName, length);
 
+	printf("soc.sun_path %s starting up\n", &(lanName[1]));
 	status = connect(sockfd, (struct sockaddr *) &soc, sizeof(soc));
 	if(status == -1) {
 		char * error_buffer = malloc(256);
